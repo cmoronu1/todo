@@ -22,7 +22,7 @@ interface TaskWrapperProps {
 
 export function TaskWrapper({ tasks, setTasks }: TaskWrapperProps) {
   return (
-    <div className="grid grid-cols-3 gap-4 ">
+    <div className="grid grid-cols-3 gap-4 not-sm:grid-cols-1">
       {action.map((s) => (
         <TaskRow
           status={s}

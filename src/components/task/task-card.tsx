@@ -10,7 +10,7 @@ interface TaskCardProps {
 
 export function TaskCard({ task }: TaskCardProps) {
   return (
-    <Card className="">
+    <Card className="flex-1">
       <CardHeader className="mt-2">
         <h4 className="font-bold">{task.name}</h4>
       </CardHeader>

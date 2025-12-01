@@ -31,10 +31,10 @@ export function TaskRow({ tasks, status }: TaskRowProps) {
     const nameAndIcon = RenameTask(status.job);
 
   return (
-    <Card className="bg-[#f7f7f7]">
+    <Card className="bg-[#f7f7f7] not-sm:pb-5">
       <CardHeader
         className={cn(
-          "flex flex-row justify-between items-center rounded-t-xl",
+          "flex flex-row justify-between items-center rounded-t-xl px-2",
           status.color
         )}
       >
@@ -51,7 +51,7 @@ export function TaskRow({ tasks, status }: TaskRowProps) {
           <Plus />
         </Button>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <CardContent className="flex flex-col gap-4 px-2">
         {tasks.map((task) => (
           <TaskCard key={task.id} task={task} />
         ))}

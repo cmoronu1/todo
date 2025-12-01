@@ -20,7 +20,7 @@ export default function Home(){
   }, [search,data])
   return(
     <div className=" flex justify-center bg-gray-200 min-h-dvh items-center">
-      <Card className=" max-w-[80%] p-4 gap-2 w-full">
+      <Card className=" xl:max-w-[80%] p-4 gap-2 w-full">
         <Header tasks={data} setTasks={setData} />
         <Separator />
         <Filter search={search} setSearch={setSearch} />
