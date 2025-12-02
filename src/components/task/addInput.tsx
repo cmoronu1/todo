@@ -16,6 +16,15 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { accessedDynamicData } from "next/dist/server/app-render/dynamic-rendering";
+import { Select } from "@radix-ui/react-select";
+import {
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface AddTaskProps {
   taskData: Task[];
@@ -37,6 +46,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
     const filteredObject = Object.fromEntries(
       Object.entries(form).filter(([Key, value]) => Key != "description")
     );
+    // console.log(form.priority);
 
     return !Object.values(filteredObject).every((v) => v?.length > 0);
   }, [form]);
@@ -45,12 +55,19 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
     setTaskData((p) => [...p, form]);
     toast.success("Task added successfully");
     setForm((p) => ({
-      ...p,
+     id: "",
+      name: "",
+      startDate: "",
+      endDate: "",
       priority: "" as string as TaskPriorities,
       status: "" as string as TaskStatus,
       description: "",
-      users: [{ name: "", src: "" }],
+      users: [{ name: "", src: "" }]
     }));
+  }
+
+  function HandlePriority(event: any) {
+    setForm((p) => ({ ...p, priority: event.target.value }));
   }
 
   return (
@@ -124,8 +141,32 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 />
               </span>
             </div>
-            <div className="not-sm:grid not-sm:grid-cols-2 not-sm:gap-3">
-              <RadioGroup className="flex flex-row not-sm:flex-col">
+            <div className="flex gap-4 not-sm:grid not-sm:grid-cols-2 not-sm:gap-3">
+              <Select
+                // value={form.priority}
+                // onValueChange={(event) =>
+                //   setForm((p) => ({ ...p, priority: event.target.value }))
+                // }
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Priority</SelectLabel>
+                    {["Low", "Medium", "Important", "Urgent"].map((member) => (
+                      <SelectItem
+                        key={member}
+                        value={member}
+                        onFocus={()=>setForm((p)=>({...p, priority : member as unknown as TaskPriorities}))}
+                      >
+                        {member}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {/* <RadioGroup className="flex flex-row not-sm:flex-col">
                 <h2 className="text-[#181818] not-sm:text-[0.9em]">Priority</h2>
                 {["Low", "Medium", "Important", "Urgent"].map((member) => (
                   <div
@@ -144,8 +185,8 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                     />
                   </div>
                 ))}
-              </RadioGroup>
-              <RadioGroup className="flex flex-row not-sm:flex-col">
+              </RadioGroup> */}
+              {/* <RadioGroup className="flex flex-row not-sm:flex-col">
                 <h2 className="text-[#181818] not-sm:text-[0.9em]">Status</h2>
                 {["todo", "in-progress", "completed"].map((member) => (
                   <div
@@ -168,7 +209,35 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                     />
                   </div>
                 ))}
-              </RadioGroup>
+              </RadioGroup> */}
+              <Select
+                // value={form.priority}
+                // onValueChange={(event) =>
+                //   setForm((p) => ({ ...p, priority: event.target.value }))
+                // }
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Priority</SelectLabel>
+                    {["todo", "in-progress", "completed"].map((member) => (
+                      <SelectItem className="capitalize"
+                        key={member}
+                        value={member}
+                        onFocus={()=>setForm((p)=>({...p, status : member as unknown as TaskStatus}))}
+                      >
+                        {member == "todo"
+                      ? "To Do"
+                      : member == "completed"
+                      ? "Complete"
+                      : member.replace("-", " ")}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </AlertDialogTitle>
