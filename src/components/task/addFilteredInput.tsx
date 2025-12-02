@@ -55,7 +55,10 @@ export function AddFilteredTask({
     setTaskData((p) => [...p, form]);
     toast.success("Task added successfully");
     setForm((p) => ({
-      ...p,
+      id: "",
+      name: "",
+      startDate: "",
+      endDate: "",
       priority: "" as string as TaskPriorities,
       status: "" as string as TaskStatus,
       description: "",
