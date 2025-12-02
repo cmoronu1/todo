@@ -142,12 +142,12 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 </div>
               ))}
             </RadioGroup>
-            <RadioGroup className="flex flex-row ">
+            <RadioGroup className="flex flex-row not-sm:flex-col">
               <h2 className="text-blue-600 not-sm:text-[0.7em]">Status</h2>
               {["todo", "in-progress", "completed"].map((member) => (
                 <div
                   key={member}
-                  className="capitalize flex items-center gap-2 not-sm:text-[0.6em]"
+                  className="capitalize flex items-center gap-2 not-sm:text-[0.6em] justify-between"
                 >
                   {member == "todo"
                     ? "To Do"
