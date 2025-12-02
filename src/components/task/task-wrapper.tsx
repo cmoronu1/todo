@@ -28,6 +28,7 @@ export function TaskWrapper({ tasks, setTasks }: TaskWrapperProps) {
           status={s}
           key={s.job}
           tasks={tasks.filter((t) => t.status == s.job)}
+          setTasks = {setTasks}
         />
       ))}
     </div>

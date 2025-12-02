@@ -3,9 +3,13 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { TaskCard } from "./task-card";
 import { cn } from "@/lib/utils";
+import { AddTask } from "./addInput";
+import { Dispatch, SetStateAction } from "react";
+import { AddFilteredTask } from "./addFilteredInput";
 
 interface TaskRowProps {
   tasks: Task[];
+  setTasks: Dispatch<SetStateAction<Task[]>>;
   status: {
     job: string;
     color: string;
@@ -15,20 +19,31 @@ interface TaskRowProps {
 function RenameTask(status: string) {
   switch (status) {
     case "todo":
-      return { name: "To Do", icon: <ListChecks className="bg-[#cfb7e8] text-white rounded-[0.2rem]" /> };
+      return {
+        name: "To Do",
+        icon: (
+          <ListChecks className="bg-[#cfb7e8] text-white rounded-[0.2rem]" />
+        ),
+      };
     case "in-progress":
-      return { name: "In Progress", icon: <CircleEllipsis className="bg-[#f7be37] text-white rounded-full" /> };
+      return {
+        name: "In Progress",
+        icon: (
+          <CircleEllipsis className="bg-[#f7be37] text-white rounded-full" />
+        ),
+      };
     case "completed":
-      return { name: "Complete", icon: <CircleCheck className="bg-[#75c5c2] text-white rounded-full" /> };
+      return {
+        name: "Complete",
+        icon: <CircleCheck className="bg-[#75c5c2] text-white rounded-full" />,
+      };
     default:
       return {};
   }
 }
 
-
-export function TaskRow({ tasks, status }: TaskRowProps) {
-
-    const nameAndIcon = RenameTask(status.job);
+export function TaskRow({ tasks, status, setTasks }: TaskRowProps) {
+  const nameAndIcon = RenameTask(status.job);
 
   return (
     <Card className="bg-[#f7f7f7] not-sm:pb-5">
@@ -47,9 +62,7 @@ export function TaskRow({ tasks, status }: TaskRowProps) {
             ({tasks.length})
           </Button>
         </div>
-        <Button className="my-1  bg-white text-black" size={"icon-sm"}>
-          <Plus />
-        </Button>
+        <AddFilteredTask taskData={tasks} setTaskData={setTasks} selected = {status.job} />
       </CardHeader>
       <CardContent className="flex flex-col gap-4 px-2">
         {tasks.map((task) => (
