@@ -65,7 +65,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
         <AlertDialogTitle>
           <div className="flex flex-col gap-3">
             <div className="flex gap-2">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">Task Title</h2>
+              <h2 className="text-[#181818] not-sm:text-[0.7em]">Task Title</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -83,7 +83,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">Start Date</h2>
+              <h2 className="text-[#181818] not-sm:text-[0.7em]">Start Date</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -96,7 +96,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">End Date</h2>
+              <h2 className="text-[#181818] not-sm:text-[0.7em]">End Date</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -109,7 +109,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">User</h2>
+              <h2 className="text-[#181818] not-sm:text-[0.7em]">User</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -126,7 +126,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
             </div>
             <div className="not-sm:grid not-sm:grid-cols-2 not-sm:gap-3">
               <RadioGroup className="flex flex-row not-sm:flex-col">
-                <h2 className="text-blue-600 not-sm:text-[0.9em]">Priority</h2>
+                <h2 className="text-[#181818] not-sm:text-[0.9em]">Priority</h2>
                 {["Low", "Medium", "Important", "Urgent"].map((member) => (
                   <div
                     key={member}
@@ -146,7 +146,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 ))}
               </RadioGroup>
               <RadioGroup className="flex flex-row not-sm:flex-col">
-                <h2 className="text-blue-600 not-sm:text-[0.9em]">Status</h2>
+                <h2 className="text-[#181818] not-sm:text-[0.9em]">Status</h2>
                 {["todo", "in-progress", "completed"].map((member) => (
                   <div
                     key={member}
@@ -173,7 +173,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
           </div>
         </AlertDialogTitle>
         <AlertDialogDescription className="flex flex-col gap-1">
-          <span className="text-[#165dfc] text-xl font-medium not-sm:text-[0.9em]">
+          <span className="text-[#181818] text-xl font-medium not-sm:text-[0.9em]">
             Description
           </span>
           <Textarea
