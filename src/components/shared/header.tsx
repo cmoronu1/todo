@@ -12,7 +12,7 @@ export function Header({ tasks, setTasks }: HeaderProps) {
   return (
     <header className=" p-2 rounded-2xl flex justify-between items-center not-sm:flex-col">
       <div className="flex items-center gap-2">
-        <div className="p-2 rounded-full border border-border">
+        <div className="p-2 rounded-full border border-border not-sm:hidden">
           <ListChecks size={26} />
         </div>
         <h1 className="text-2xl font-bold">Chika Moronu</h1>

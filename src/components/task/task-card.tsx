@@ -12,18 +12,18 @@ export function TaskCard({ task }: TaskCardProps) {
   return (
     <Card className="flex-1">
       <CardHeader className="mt-2">
-        <h4 className="font-bold">{task.name}</h4>
+        <h4 className="font-bold not-lg:text-[0.8em]">{task.name}</h4>
       </CardHeader>
       <CardContent className="gap-2 flex flex-col mb-4">
         <div className="flex items-center gap-3">
           <CalendarDays size={18} />
           <div className="flex gap-1">
             <span className="text-sm">
-              {format(new Date(task.startDate), "dd/MM/yyyy")}
+              {format(new Date(task.startDate), "dd-MMM")}
             </span>
             <span className="text-sm">-</span>
-            <span className="text-sm">
-              {format(new Date(task.endDate), "dd/MM/yyyy")}
+            <span className="text-sm ">
+              {format(new Date(task.endDate), "dd-MMM")}
             </span>
           </div>
         </div>
@@ -58,7 +58,7 @@ export function TaskCard({ task }: TaskCardProps) {
         </div>
         <div className="flex items-center gap-2">
           <Flag size={18} />
-          <span>{task.priority}</span>
+          <span className="not-lg:text-[0.8em]">{task.priority}</span>
         </div>
       </CardContent>
     </Card>

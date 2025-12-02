@@ -66,7 +66,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
         <AlertDialogTitle>
           <div className="flex flex-col gap-3">
             <div className="flex gap-2">
-              <h2 className="text-blue-600">Task Title</h2>
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">Task Title</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -84,7 +84,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600">Start Date</h2>
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">Start Date</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -97,7 +97,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600">End Date</h2>
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">End Date</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -110,7 +110,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               </span>
             </div>
             <div className="flex gap-2">
-              <h2 className="text-blue-600">User</h2>
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">User</h2>
               <span>
                 <Input
                   className="h-6 rounded-none"
@@ -125,10 +125,10 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 />
               </span>
             </div>
-            <RadioGroup className="flex flex-row">
-              <h2 className="text-blue-600">Priority</h2>
+            <RadioGroup className="flex flex-row not-sm:flex-col">
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">Priority</h2>
               {["Low", "Medium", "Important", "Urgent"].map((member) => (
-                <div key={member} className="flex gap-2 items-center">
+                <div key={member} className="flex gap-2 items-center not-sm:text-[0.6em] justify-between">
                   {member}
                   <RadioGroupItem
                     value={member}
@@ -142,12 +142,12 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 </div>
               ))}
             </RadioGroup>
-            <RadioGroup className="flex flex-row">
-              <h2 className="text-blue-600">Status</h2>
+            <RadioGroup className="flex flex-row ">
+              <h2 className="text-blue-600 not-sm:text-[0.7em]">Status</h2>
               {["todo", "in-progress", "completed"].map((member) => (
                 <div
                   key={member}
-                  className="capitalize flex items-center gap-2"
+                  className="capitalize flex items-center gap-2 not-sm:text-[0.6em]"
                 >
                   {member == "todo"
                     ? "To Do"
@@ -169,10 +169,10 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
           </div>
         </AlertDialogTitle>
         <AlertDialogDescription className="flex flex-col gap-1">
-          <span className="text-[#165dfc] text-xl font-medium">
+          <span className="text-[#165dfc] text-xl font-medium not-sm:text-[0.7em]">
             Description
           </span>
-          <Textarea
+          <Textarea className="not-sm:w-[90%]"
             placeholder="Enter Description here"
             onChange={(event) =>
               setForm((p) => ({ ...p, description: event?.target.value }))
@@ -180,8 +180,8 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
           />
         </AlertDialogDescription>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={HandleAdd} disabled={disabled}>
+          <AlertDialogCancel className="not-sm:w-[90%]">Cancel</AlertDialogCancel>
+          <AlertDialogAction className="not-sm:w-[90%]"onClick={HandleAdd} disabled={disabled}>
             Add Task
           </AlertDialogAction>
         </AlertDialogFooter>
