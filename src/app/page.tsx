@@ -8,7 +8,7 @@ import { AllTask } from "@/data/task";
 import { useMemo, useState } from "react";
 
 export default function Home(){
-  const [data, setData] = useState(AllTask);
+  const [data, setData] = useState<Task[]>([]);
   const [search, setSearch] = useState('')
   const filteredTasks = useMemo(()=> {
     if(search?.length > 0){
