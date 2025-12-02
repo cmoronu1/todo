@@ -38,7 +38,6 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
       Object.entries(form).filter(([Key, value]) => Key != "description")
     );
 
-    
     return !Object.values(filteredObject).every((v) => v?.length > 0);
   }, [form]);
 
@@ -50,7 +49,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
       priority: "" as string as TaskPriorities,
       status: "" as string as TaskStatus,
       description: "",
-      users: [{name:'',src:''}],
+      users: [{ name: "", src: "" }],
     }));
   }
 
@@ -125,54 +124,60 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 />
               </span>
             </div>
-            <RadioGroup className="flex flex-row not-sm:flex-col">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">Priority</h2>
-              {["Low", "Medium", "Important", "Urgent"].map((member) => (
-                <div key={member} className="flex gap-2 items-center not-sm:text-[0.6em] justify-between">
-                  {member}
-                  <RadioGroupItem
-                    value={member}
-                    onClick={() =>
-                      setForm((d) => ({
-                        ...d,
-                        priority: member as unknown as TaskPriorities,
-                      }))
-                    }
-                  />
-                </div>
-              ))}
-            </RadioGroup>
-            <RadioGroup className="flex flex-row not-sm:flex-col">
-              <h2 className="text-blue-600 not-sm:text-[0.7em]">Status</h2>
-              {["todo", "in-progress", "completed"].map((member) => (
-                <div
-                  key={member}
-                  className="capitalize flex items-center gap-2 not-sm:text-[0.6em] justify-between"
-                >
-                  {member == "todo"
-                    ? "To Do"
-                    : member == "completed"
-                    ? "Complete"
-                    : member.replace("-", " ")}
-                  <RadioGroupItem
-                    value={member}
-                    onClick={() =>
-                      setForm((p) => ({
-                        ...p,
-                        status: member as unknown as TaskStatus,
-                      }))
-                    }
-                  />
-                </div>
-              ))}
-            </RadioGroup>
+            <div className="not-sm:grid not-sm:grid-cols-2 not-sm:gap-3">
+              <RadioGroup className="flex flex-row not-sm:flex-col">
+                <h2 className="text-blue-600 not-sm:text-[0.9em]">Priority</h2>
+                {["Low", "Medium", "Important", "Urgent"].map((member) => (
+                  <div
+                    key={member}
+                    className="flex gap-2 items-center not-sm:text-[0.6em] not-sm:justify-between"
+                  >
+                    {member}
+                    <RadioGroupItem
+                      value={member}
+                      onClick={() =>
+                        setForm((d) => ({
+                          ...d,
+                          priority: member as unknown as TaskPriorities,
+                        }))
+                      }
+                    />
+                  </div>
+                ))}
+              </RadioGroup>
+              <RadioGroup className="flex flex-row not-sm:flex-col">
+                <h2 className="text-blue-600 not-sm:text-[0.9em]">Status</h2>
+                {["todo", "in-progress", "completed"].map((member) => (
+                  <div
+                    key={member}
+                    className="capitalize flex items-center gap-2 not-sm:text-[0.6em] justify-between"
+                  >
+                    {member == "todo"
+                      ? "To Do"
+                      : member == "completed"
+                      ? "Complete"
+                      : member.replace("-", " ")}
+                    <RadioGroupItem
+                      value={member}
+                      onClick={() =>
+                        setForm((p) => ({
+                          ...p,
+                          status: member as unknown as TaskStatus,
+                        }))
+                      }
+                    />
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
           </div>
         </AlertDialogTitle>
         <AlertDialogDescription className="flex flex-col gap-1">
-          <span className="text-[#165dfc] text-xl font-medium not-sm:text-[0.7em]">
+          <span className="text-[#165dfc] text-xl font-medium not-sm:text-[0.9em]">
             Description
           </span>
-          <Textarea className="not-sm:w-[90%]"
+          <Textarea
+            className="not-sm:w-[90%]"
             placeholder="Enter Description here"
             onChange={(event) =>
               setForm((p) => ({ ...p, description: event?.target.value }))
@@ -180,8 +185,14 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
           />
         </AlertDialogDescription>
         <AlertDialogFooter>
-          <AlertDialogCancel className="not-sm:w-[90%]">Cancel</AlertDialogCancel>
-          <AlertDialogAction className="not-sm:w-[90%]"onClick={HandleAdd} disabled={disabled}>
+          <AlertDialogCancel className="not-sm:w-[90%]">
+            Cancel
+          </AlertDialogCancel>
+          <AlertDialogAction
+            className="not-sm:w-[90%]"
+            onClick={HandleAdd}
+            disabled={disabled}
+          >
             Add Task
           </AlertDialogAction>
         </AlertDialogFooter>
