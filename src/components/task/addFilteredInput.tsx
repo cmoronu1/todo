@@ -64,6 +64,7 @@ export function AddFilteredTask({
       description: "",
       users: [{ name: "", src: "" }],
     }));
+    selected='';
   }
 
   return (
