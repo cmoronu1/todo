@@ -145,7 +145,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
               <Select
                 // value={form.priority}
                 // onValueChange={(event) =>
-                //   setForm((p) => ({ ...p, priority: event.target.value }))
+                //   setForm((p) => ({ ...p, priority: value }))
                 // }
               >
                 <SelectTrigger className="w-[180px]">

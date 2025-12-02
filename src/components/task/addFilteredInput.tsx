@@ -166,7 +166,7 @@ export function AddFilteredTask({
                 //   setForm((p) => ({ ...p, priority: event.target.value }))
                 // }
               >
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Priority" />
                 </SelectTrigger>
                 <SelectContent>
@@ -216,7 +216,7 @@ export function AddFilteredTask({
                 //   setForm((p) => ({ ...p, priority: event.target.value }))
                 // }
               >
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Status" />
                 </SelectTrigger>
                 <SelectContent>
