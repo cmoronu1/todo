@@ -12,7 +12,7 @@ export default function Home(){
   const [search, setSearch] = useState('')
   const filteredTasks = useMemo(()=> {
     if(search?.length > 0){
-      return data.filter((t)=> t.name.toLowerCase().includes(search))
+      return data.filter((t)=> t.name.toLowerCase().includes(search.toLowerCase()))
     }
     else {
       return data
