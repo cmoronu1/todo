@@ -55,20 +55,17 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
     setTaskData((p) => [...p, form]);
     toast.success("Task added successfully");
     setForm((p) => ({
-     id: "",
+      id: "",
       name: "",
       startDate: "",
       endDate: "",
       priority: "" as string as TaskPriorities,
       status: "" as string as TaskStatus,
       description: "",
-      users: [{ name: "", src: "" }]
+      users: [{ name: "", src: "" }],
     }));
   }
 
-  function HandlePriority(event: any) {
-    setForm((p) => ({ ...p, priority: event.target.value }));
-  }
 
   return (
     <AlertDialog>
@@ -143,10 +140,13 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
             </div>
             <div className="flex gap-4 not-sm:grid not-sm:grid-cols-2 not-sm:gap-3">
               <Select
-                // value={form.priority}
-                // onValueChange={(event) =>
-                //   setForm((p) => ({ ...p, priority: value }))
-                // }
+                value={form.priority}
+                onValueChange={(value) =>
+                  setForm((p) => ({
+                    ...p,
+                    priority: value as unknown as TaskPriorities,
+                  }))
+                }
               >
                 <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Priority" />
@@ -158,7 +158,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                       <SelectItem
                         key={member}
                         value={member}
-                        onFocus={()=>setForm((p)=>({...p, priority : member as unknown as TaskPriorities}))}
+                        // onFocus={()=>setForm((p)=>({...p, priority : member as unknown as TaskPriorities}))}
                       >
                         {member}
                       </SelectItem>
@@ -211,10 +211,10 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 ))}
               </RadioGroup> */}
               <Select
-                // value={form.priority}
-                // onValueChange={(event) =>
-                //   setForm((p) => ({ ...p, priority: event.target.value }))
-                // }
+              value={form.status}
+              onValueChange={(value) =>
+                setForm((p) => ({ ...p, status: value as unknown as TaskStatus }))
+              }
               >
                 <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Status" />
@@ -223,16 +223,22 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                   <SelectGroup>
                     <SelectLabel>Priority</SelectLabel>
                     {["todo", "in-progress", "completed"].map((member) => (
-                      <SelectItem className="capitalize"
+                      <SelectItem
+                        className="capitalize"
                         key={member}
                         value={member}
-                        onFocus={()=>setForm((p)=>({...p, status : member as unknown as TaskStatus}))}
+                        // onFocus={() =>
+                        //   setForm((p) => ({
+                        //     ...p,
+                        //     status: member as unknown as TaskStatus,
+                        //   }))
+                        // }
                       >
                         {member == "todo"
-                      ? "To Do"
-                      : member == "completed"
-                      ? "Complete"
-                      : member.replace("-", " ")}
+                          ? "To Do"
+                          : member == "completed"
+                          ? "Complete"
+                          : member.replace("-", " ")}
                       </SelectItem>
                     ))}
                   </SelectGroup>

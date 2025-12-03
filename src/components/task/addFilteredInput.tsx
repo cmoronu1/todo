@@ -16,7 +16,15 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { accessedDynamicData } from "next/dist/server/app-render/dynamic-rendering";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface AddTaskProps {
   taskData: Task[];
@@ -65,7 +73,7 @@ export function AddFilteredTask({
       description: "",
       users: [{ name: "", src: "" }],
     }));
-    selected='';
+    selected = "";
   }
 
   return (
@@ -160,11 +168,14 @@ export function AddFilteredTask({
                   </div>
                 ))}
               </RadioGroup> */}
-               <Select
-                // value={form.priority}
-                // onValueChange={(event) =>
-                //   setForm((p) => ({ ...p, priority: event.target.value }))
-                // }
+              <Select
+                value={form.priority}
+                onValueChange={(value) =>
+                  setForm((p) => ({
+                    ...p,
+                    priority: value as unknown as TaskPriorities,
+                  }))
+                }
               >
                 <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Priority" />
@@ -176,7 +187,7 @@ export function AddFilteredTask({
                       <SelectItem
                         key={member}
                         value={member}
-                        onFocus={()=>setForm((p)=>({...p, priority : member as unknown as TaskPriorities}))}
+                        // onFocus={()=>setForm((p)=>({...p, priority : member as unknown as TaskPriorities}))}
                       >
                         {member}
                       </SelectItem>
@@ -211,10 +222,13 @@ export function AddFilteredTask({
                 ))}
               </RadioGroup> */}
               <Select
-                // value={form.priority}
-                // onValueChange={(event) =>
-                //   setForm((p) => ({ ...p, priority: event.target.value }))
-                // }
+                value={form.status}
+                onValueChange={(value) =>
+                  setForm((p) => ({
+                    ...p,
+                    status: value as unknown as TaskStatus,
+                  }))
+                }
               >
                 <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Status" />
@@ -223,16 +237,16 @@ export function AddFilteredTask({
                   <SelectGroup>
                     <SelectLabel>Priority</SelectLabel>
                     {["todo", "in-progress", "completed"].map((member) => (
-                      <SelectItem className="capitalize"
+                      <SelectItem
                         key={member}
                         value={member}
-                        onFocus={()=>setForm((p)=>({...p, status : member as unknown as TaskStatus}))}
+                        // onFocus={()=>setForm((p)=>({...p, status : member as unknown as TaskStatus}))}
                       >
                         {member == "todo"
-                      ? "To Do"
-                      : member == "completed"
-                      ? "Complete"
-                      : member.replace("-", " ")}
+                          ? "To Do"
+                          : member == "completed"
+                          ? "Complete"
+                          : "In Progress"}
                       </SelectItem>
                     ))}
                   </SelectGroup>
