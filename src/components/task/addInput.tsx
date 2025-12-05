@@ -66,7 +66,6 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
     }));
   }
 
-
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -211,10 +210,13 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                 ))}
               </RadioGroup> */}
               <Select
-              value={form.status}
-              onValueChange={(value) =>
-                setForm((p) => ({ ...p, status: value as unknown as TaskStatus }))
-              }
+                value={form.status}
+                onValueChange={(value) =>
+                  setForm((p) => ({
+                    ...p,
+                    status: value as unknown as TaskStatus,
+                  }))
+                }
               >
                 <SelectTrigger className="w-[180px] not-sm:w-full">
                   <SelectValue placeholder="Select Status" />
@@ -224,7 +226,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                     <SelectLabel>Priority</SelectLabel>
                     {["todo", "in-progress", "completed"].map((member) => (
                       <SelectItem
-                        className="capitalize"
+                        className=" capitalize"
                         key={member}
                         value={member}
                         // onFocus={() =>
@@ -238,7 +240,7 @@ export function AddTask({ taskData, setTaskData }: AddTaskProps) {
                           ? "To Do"
                           : member == "completed"
                           ? "Complete"
-                          : member.replace("-", " ")}
+                          : "In Progress"}
                       </SelectItem>
                     ))}
                   </SelectGroup>
