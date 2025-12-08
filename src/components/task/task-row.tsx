@@ -62,7 +62,11 @@ export function TaskRow({ tasks, status, setTasks }: TaskRowProps) {
             ({tasks.length})
           </Button>
         </div>
-        <AddFilteredTask taskData={tasks} setTaskData={setTasks} selected = {status.job} />
+        <AddFilteredTask
+          taskData={tasks}
+          setTaskData={setTasks}
+          selected={status.job}
+        />
       </CardHeader>
       <CardContent className="flex flex-col gap-4 px-2">
         {tasks.map((task) => (
